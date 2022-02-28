@@ -1,9 +1,17 @@
+<?php
+//Mengirimkan Token Keamanan Ajax Request (Csrf Token)
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+  $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
 
   <title>e-Mading - Media pembelajaran interaktif</title>
   <meta content="" name="description">
@@ -207,8 +215,8 @@
         <div class="row">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
             <div class="comment-box">
-              <div class="chat-wrapper">
-                <div class="chat-box">
+              <div class="chat-wrapper" id="display_comment">
+                <!-- <div class="chat-box">
                   <div class="name">Justin Bieber</div>
                   <div class="desc">Wow, materinya sangat menarik</div>
                 </div>
@@ -226,21 +234,21 @@
                 <div class="chat-box">
                   <div class="name">Elon Musk</div>
                   <div class="desc">Kalo bisa lebih ditambah lagi materi-materinya. Sejauh ini sudah cukup baik</div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
 
           <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-right" data-aos-delay="100">
             <div class="comment-box">
-              <form action="forms/contact.php" method="post" role="form" class="comment-form">
+              <form method="POST" id="comment_form" role="form" class="comment-form">
                 <div class="row">
                   <div class="col-md-12 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
+                    <input type="text" name="sender" class="form-control" id="sender" placeholder="Masukan Nama" required>
                   </div>
                 </div>
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
+                  <textarea class="form-control" name="comment" id="comment" rows="7" placeholder="Tuliskan komentar disini" required></textarea>
                 </div>
                 <button class="btn btn-success" type="submit">Kirim Komentar</button>
               </form>
@@ -249,8 +257,8 @@
         </div>
     </section>
     <!-- End Contact Section -->
-    
-        <!-- ======= Testimonials Section ======= -->
+
+    <!-- ======= Testimonials Section ======= -->
     <section id="profile" class="testimonials">
       <div class="container">
 
@@ -265,47 +273,47 @@
                 <h4>Jurusan : Pendidikan Dasar</h4>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i> </br>
                 <strong>TUJUAN PEMBELAJARAN </strong> </br>
-                1.	Dengan membaca materi pada e-mading, siswa mampu merinci unsur-unsur iklan dengan benar. <br/>
-                2.	Dengan mengamati contoh iklan pada e-mading, siswa mampu menemukan informasi yang terkandung dalam iklan dengan benar.<br/>
-                3.	Dengan membaca materi pada e-mading, siswa mampu merinci organ-organ pencernaan pada manusia dengan benar.<br/>
-                4.	Dengan mengamati video dan diskusi pada e-mading, siswa mampu membuat diagram alur proses pencernaan manusia dengan benar.<br/>
-                5.	Dengan membaca materi pada e-mading dan bimbingan guru, siswa mampu menguraikan ciri-ciri lagu bertangga nada mayor dan minor dengan benar.<br/>
-                6.	Dengan membaca materi dan mengamati contoh lagu, siswa mampu menyanyikan lagu sesuai dengan tangga nada dengan benar.<br/>
+                1. Dengan membaca materi pada e-mading, siswa mampu merinci unsur-unsur iklan dengan benar. <br />
+                2. Dengan mengamati contoh iklan pada e-mading, siswa mampu menemukan informasi yang terkandung dalam iklan dengan benar.<br />
+                3. Dengan membaca materi pada e-mading, siswa mampu merinci organ-organ pencernaan pada manusia dengan benar.<br />
+                4. Dengan mengamati video dan diskusi pada e-mading, siswa mampu membuat diagram alur proses pencernaan manusia dengan benar.<br />
+                5. Dengan membaca materi pada e-mading dan bimbingan guru, siswa mampu menguraikan ciri-ciri lagu bertangga nada mayor dan minor dengan benar.<br />
+                6. Dengan membaca materi dan mengamati contoh lagu, siswa mampu menyanyikan lagu sesuai dengan tangga nada dengan benar.<br />
 
 
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </div>
             </div>
-            
+
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <p>
-                <!-- <strong>
+                  <!-- <strong>
                 Tema 3 (Makanan Sehat) </br>
                 Subtema 1 ( Bagaimana Tubuh Mengolah Makanan) </br>
                 Pembelajaran 2 </br></br>
                 </strong> -->
 
-                <strong>Kompotensi Dasar (KD) & Indikator</strong> </br></br>
-                
-                <strong> Bahasa Indonesia </strong></br>
-                <strong>Kompetensi Dasar (KD) </strong></br>
-                3.4 Menganalisis informasi yang disampaikan paparan iklan dari media cetak atau elektronik </br>
-                4.4 Memeragakan kembali informasi yang disampaikan paparan iklan dari media cetak atau elektronik dengan bantuan lisan, tulis, dan visual </br></br>
+                  <strong>Kompotensi Dasar (KD) & Indikator</strong> </br></br>
 
-                <strong>IPA</strong> </br>
-                <strong>Kompetensi Dasar (KD)</strong> </br>
-                3.3. Menjelaskan organ pencernaan dan fungsinya pada hewan dan manusia serta cara memelihara kesehatan organ pencernaan manusia </br>
-                4.3. Menyajikan karya tentang konsep organ dan fungsi pencernaan pada hewan atau manusia </br></br>
+                  <strong> Bahasa Indonesia </strong></br>
+                  <strong>Kompetensi Dasar (KD) </strong></br>
+                  3.4 Menganalisis informasi yang disampaikan paparan iklan dari media cetak atau elektronik </br>
+                  4.4 Memeragakan kembali informasi yang disampaikan paparan iklan dari media cetak atau elektronik dengan bantuan lisan, tulis, dan visual </br></br>
 
-                <strong>SBdP</strong> </br>
-                <strong>Kompetensi Dasar (KD)</strong> </br>
-                3.2 Memahami tangga nada. </br>
-                4.2 Menyanyikan lagu-lagu dalam berbagai tangga nada dengan iringan musik </br>
+                  <strong>IPA</strong> </br>
+                  <strong>Kompetensi Dasar (KD)</strong> </br>
+                  3.3. Menjelaskan organ pencernaan dan fungsinya pada hewan dan manusia serta cara memelihara kesehatan organ pencernaan manusia </br>
+                  4.3. Menyajikan karya tentang konsep organ dan fungsi pencernaan pada hewan atau manusia </br></br>
+
+                  <strong>SBdP</strong> </br>
+                  <strong>Kompetensi Dasar (KD)</strong> </br>
+                  3.2 Memahami tangga nada. </br>
+                  4.2 Menyanyikan lagu-lagu dalam berbagai tangga nada dengan iringan musik </br>
                 </p>
               </div>
             </div>
-            
+
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -338,11 +346,54 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="assets/js/jquery.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    $(document).ready(function() {
+      //Mengirimkan Token Keamanan
+      $.ajaxSetup({
+        headers: {
+          'Csrf-Token': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      $('#comment_form').on('submit', function(event) {
+        event.preventDefault();
+        var form_data = $(this).serialize();
+        $.ajax({
+          url: "_addComments.php",
+          method: "POST",
+          data: form_data,
+          success: function(data) {
+            $('#comment_form')[0].reset();
+            load_comment();
+          },
+          error: function(data) {
+            console.log(data.responseText)
+          }
+        })
+      });
+
+      load_comment();
+
+      function load_comment(){
+      	$.ajax({
+      		url:"_getComments.php",
+      		method:"POST",
+      		success:function(data){
+      			$('#display_comment').html(data);
+      		}, error: function(data) {
+            console.log(data.responseText)
+          }
+      	})
+      }
+    });
+  </script>
+  </script>
 
 </body>
 
