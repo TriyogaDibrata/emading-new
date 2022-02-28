@@ -1,6 +1,7 @@
 //inisiasi soal dalam quiz
 const questions = [
     {
+        //soal 1
         question: "Perhatikan gambar berikut ! <br/> <img width='auto' height='300' src='assets/img/kuis/kuis1.jpg' /> <br/> Informasi pada iklan diatas berisi tentang…",
         optionA: "Ajakan memancing ikan",
         optionB: "Manfaat memakan ikan kalengan",
@@ -10,15 +11,23 @@ const questions = [
     },
 
     {
-        question: "Gambar pada iklan harus dibuat secara menarik dan sesuai dengan….",
-        optionA: "Kata kunci",
-        optionB: "Sasaran iklan",
-        optionC: "Isi iklan",
-        optionD: "Pembuat iklan",
-        correctOption: "optionC"
+        //soal 2
+        question: `Perhatikan pernyataan dibawah ini! <br/>
+        1)	Mengajak orang lain mengonsumsi sesuatu barang atau jasa sasaran iklan <br/>
+        2)	 Memberi tahu cara penggunaan suatu barang <br/>
+        3)	 Menginformasikan keadaaan cuaca suatu wilayah <br/>
+        4)	Mengabarkan berita duka atau kebahagiaan kepada banyak orang. <br/>
+        Dari pernyataan diatas yang termasuk dari tujuan pembuatan iklan adalah….
+        `,
+        optionA: "4",
+        optionB: "3",
+        optionC: "2",
+        optionD: "1",
+        correctOption: "optionD"
     },
 
     {
+        //soal 3
         question: "Perhatikan gambar berikut ! <br/> <img width='auto' height='300' src='assets/img/kuis/kuis2.png' /> <br/> Kata kunci iklan tersebut adalah…",
         optionA: "Makan sehat pasti bergizi",
         optionB: "Makanan bergizi penting untuk mengganti sel-sel yang rusak",
@@ -28,24 +37,27 @@ const questions = [
     },
 
     {
-        question: "Berikut ini yang bukan merupakan bagian dari organ pencernaan manusia adalah…",
+        //soal 4
+        question:"Perhatikan gambar berikut ! <br/> <img width='auto' height='300' src='assets/img/kuis/kuis45.PNG' /> <br/> Organ pencernaan nomor 2 yang ditunjukkan pada gambar diatas adalah…",
         optionA: "Lambung",
         optionB: "Kerongkongan ",
         optionC: "Usus halus",
         optionD: "Tenggorokan",
+        correctOption: "optionB"
+    },
+
+    {
+        // soal 5
+        question: "Perhatikan gambar berikut ! <br/> <img width='auto' height='300' src='assets/img/kuis/kuis45.PNG' /> <br/> Urutan saluran pencernaan dari gambar pada soal nomor 4 yang tepat adalah…",
+        optionA: "1, 2, 5, 6, 7, 8",
+        optionB: "1, 3, 4, 5, 7, 8",
+        optionC: "1, 2, 4, 5, 6, 8",
+        optionD: "1, 2, 4, 7, 6, 8",
         correctOption: "optionD"
     },
 
     {
-        question: "Organ pencernaan yang berfungsi menyerap sari-sari makanan adalah….",
-        optionA: "Lambung",
-        optionB: "Usus besar",
-        optionC: "Usus halus",
-        optionD: "Mulut",
-        correctOption: "optionC"
-    },
-
-    {
+        // soal 6
         question: "Perhatikan gambar berikut ! <br/> <img width='auto' height='300' src='assets/img/kuis/kuis3.jpg' /> <br/> Organ pencernaan lambung ditunjukkan pada nomor….",
         optionA: "2",
         optionB: "1",
@@ -55,38 +67,60 @@ const questions = [
     },
 
     {
-        question: "Sistem pencernaan manusia berfungsi untuk….",
-        optionA: "Menyimpan cadangan makanan",
-        optionB: "Mengolah bahan makanan",
-        optionC: "Mengolah makanan",
-        optionD: "Menghaluskan bahan makanan",
+        // soal 7
+        question: `Perhatikan pernyataan dibawah ini! <br/>
+        1)	Sebagai saluran pembuangan sisa makanan <br/>
+        2)	Sebagai saluran penghubung mulut dan lambung dan terjadi gerak peristaltik <br/>
+        3)	Sebagai tempat penyerapan sari-sari makanan <br/>
+        4)	Sebagai tempat penyerapan air sisa penyerapan usus halus dan membuang zat-zat sisanya. <br/>
+         Dari pernyataan diatas yang termasuk fungsi organ pencernaan kerongkongan adalah…
+        `,
+        optionA: "1",
+        optionB: "2",
+        optionC: "3",
+        optionD: "4",
+        correctOption: "optionB"
+    },
+
+    {
+        // soal 8
+        question: "Nina menyanyikan sebuah lagu. Lagu itu dinyanyikan dengan ekspresi sedih. Tangga nada yang sesuai untuk lagu itu adalah…",
+        optionA: "Pentatonis",
+        optionB: "Mayor",
+        optionC: "Minor",
+        optionD: "Madenda",
         correctOption: "optionC"
     },
 
     {
-        question: "Lagu bertangga nada mayor biasanya dinyanyikan dengan….",
-        optionA: "Sedih",
-        optionB: "Terharu",
-        optionC: "Bersemangat",
-        optionD: "Kurang semangat",
-        correctOption: "optionC"
-    },
-
-    {
-        question: "Dibawah ini yang tidak termasuk lagu bertangga nada minor adalah…",
-        optionA: "Maju tak gentar",
-        optionB: "Syukur",
-        optionC: "Gugur Bunga",
-        optionD: "Indonesia Pusaka",
+        // soal 9
+        question: `Perhatikan pernyataan berikut! <br/>
+        1)	Indonesia Raya <br/>
+        2)	Satu nusa satu bangsa <br/>
+        3)	Indonesia pusaka <br/>
+        4)	Bagimu negeri <br/>
+        Yang termasuk lagu bertangga nada mayor ditunjukkan pada nomor…
+        `,
+        optionA: "1 dan 2",
+        optionB: "2 dan 3",
+        optionC: "1 dan 4",
+        optionD: "2 dan 4",
         correctOption: "optionA"
     },
 
     {
-        question: "Lagu Garuda Pancasila termasuk lagu bertangga nada….",
-        optionA: "Minor ",
-        optionB: "Mayor",
-        optionC: "Pentatonis",
-        optionD: "Kromatis",
+        // soal 10
+        question: `Perhatikan pernyataan berikut! <br/>
+        1)	Syukur <br/>
+        2)	Dari sabang sampai Merauke <br/>
+        3)	Gugur bunga <br/>
+        4)	Garuda Pancasila <br/>
+        Contoh lagu bertangga nada minor ditunjukkan nomor…
+        `,
+        optionA: "1 dan 2 ",
+        optionB: "1 dan 3",
+        optionC: "2 dan 3",
+        optionD: "2 dan 4",
         correctOption: "optionB"
     }
 ]
@@ -219,7 +253,7 @@ function handleEndGame() {
         remarkColor = "orange"
     }
     else if (playerScore >= 7) {
-        remark = "Kerja bagus, tetap pertahankan kemampuanmu"
+        remark = "Kerja bagus, tetap tingkatkan kemampuanmu"
         remarkColor = "green"
     }
     const playerGrade = (playerScore / 10) * 100
